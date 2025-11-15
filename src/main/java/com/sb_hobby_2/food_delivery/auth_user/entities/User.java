@@ -1,6 +1,7 @@
 package com.sb_hobby_2.food_delivery.auth_user.entities;
 
 import com.sb_hobby_2.food_delivery.order.entities.Order;
+import com.sb_hobby_2.food_delivery.payment.entities.Payment;
 import com.sb_hobby_2.food_delivery.review.entities.Review;
 import com.sb_hobby_2.food_delivery.role.entities.Role;
 import jakarta.persistence.*;
@@ -55,6 +56,9 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Review> reviews;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Payment> payments;
 
     //Timing
     private LocalDateTime createdAt;
