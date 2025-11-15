@@ -1,5 +1,7 @@
 package com.sb_hobby_2.food_delivery.auth_user.entities;
 
+import com.sb_hobby_2.food_delivery.order.entities.Order;
+import com.sb_hobby_2.food_delivery.review.entities.Review;
 import com.sb_hobby_2.food_delivery.role.entities.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -47,6 +49,12 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private List<Role> roles;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Order> orders;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Review> reviews;
 
     //Timing
     private LocalDateTime createdAt;
